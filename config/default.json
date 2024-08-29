@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://dogi123:dogi123@devconnector.wjiiv.mongodb.net/?retryWrites=true&w=majority&appName=DevConnector",
+    "jwtSecret":"mysecrettoken"
+}
