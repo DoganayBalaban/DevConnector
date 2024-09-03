@@ -13,6 +13,7 @@
   "author": "Doğanay Balaban",
   "license": "MIT",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.12",
     "express": "^4.19.2",
