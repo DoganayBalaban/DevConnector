@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Link, Navigate, replace } from "react-router-dom";
-import { connect } from "react-redux";
-import { setAlert } from "../../actions/alert";
-import { register } from "../../actions/auth";
-import PropTypes from "prop-types";
-const Register = ({ setAlert, register, isAuthenticated }) => {
+import { Link, Navigate } from "react-router-dom";
+import useAuthStore from "../../store/auth";
+const Register = () => {
+  const { register, error, isAuthenticated } = useAuthStore();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,20 +14,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setAlert("Passwords do not match", "danger");
-    } else {
-      register({ name, email, password });
-      setAlert("Kayıt Başarılı.", "success");
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-    }
+    await register(name, email, password);
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
-  if (isAuthenticated) {
+  if (isAuthenticated()) {
     return <Navigate to="/dashboard" replace={true} />;
   }
   return (
@@ -87,12 +80,5 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     </>
   );
 };
-Register.propTypes = {
-  setAlert: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
-};
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-export default connect(mapStateToProps, { setAlert, register })(Register);
+
+export default Register;

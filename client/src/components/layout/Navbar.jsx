@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { logout } from "../../actions/auth";
+import useAuthStore from "../../store/auth";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = () => {
+  const { isAuthenticated, loading, logout } = useAuthStore();
   const authLinks = (
     <ul>
       <li>
@@ -35,15 +34,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <i className="fas fa-code"></i> DevConnector
         </Link>
       </h1>
-      {!loading && <>{isAuthenticated ? authLinks : guestLinks}</>}
+      {!loading && <>{isAuthenticated() ? authLinks : guestLinks}</>}
     </nav>
   );
 };
-Navbar.propTypes = {
-  logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-};
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-export default connect(mapStateToProps, { logout })(Navbar);
+
+export default Navbar;

@@ -13,7 +13,6 @@
   "author": "Doğanay Balaban",
   "license": "MIT",
   "dependencies": {
-    "@reduxjs/toolkit": "^2.2.7",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.12",
     "express": "^4.19.2",
@@ -21,7 +20,8 @@
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
