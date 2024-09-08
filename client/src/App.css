@@ -6,6 +6,29 @@
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
+.error-container {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  margin: 10px 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-message {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #721c24;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 * {
   box-sizing: border-box;
